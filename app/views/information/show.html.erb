@@ -1,0 +1,16 @@
+<div class="container-sm card text-bg-secondary mb-3">
+  <div class="card-header" style="font-size: 40px;">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= button_to "Delete", @information, method: :delete, data: { confirm:'Are you sure?' }, class:"btn btn-primary" %>
+  </div>
+  <%= @information.first_name %> <%= @information.last_name %></div>
+  <div class="card-body">
+    <a><b>Email: </b></a><%= @information.email %><br><br>
+    <a><b>Phone: </b></a><%= @information.phone %><br><br>
+    <a><b>Age: </b></a><%= @information.age %><br><br>
+    <%= link_to "Edit this information", edit_information_path(@information), class:"btn btn-dark" %> 
+    <%= link_to "Back to information", information_index_path, class:"btn btn-dark" %>
+    </div>
+</div>
+
+

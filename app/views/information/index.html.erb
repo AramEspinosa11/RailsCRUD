@@ -1,0 +1,42 @@
+<% if user_signed_in?  %>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Age</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @information.each do |information| %>
+        <% if information.user == current_user %>
+        <tr>
+          <td><%= link_to information.first_name + ' ' +information.last_name, information %></td>
+          <td><%= information.email %></td>
+          <td><%= information.phone %></td>
+          <td><%= information.age %></td>
+          <td><%= button_to 'Delete', information, method: :delete, data:{ confirm:'Are you sure?' }, class:"d-grid gap-2 col-6 mx-auto btn-sm btn btn-outline-danger" %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to "New Friend", new_information_path, class:"d-grid gap-2 col-6 mx-auto btn btn-secondary" %>
+<% else %>
+<div class="card text-center" style="margin-top: 50px;">
+  <div class="card-header">
+  Friends App
+  </div>
+  <div class="card-body">
+  <h5 class="card-title">This is my firs Webpage on Ruby on Rails.....</h5>
+  <p class="card-text">Create a CRUD</p>
+  </div>
+  <div class="card-footer text-muted">
+  Create, Read, Update and Delete
+  </div>
+</div>
+<% end %>
